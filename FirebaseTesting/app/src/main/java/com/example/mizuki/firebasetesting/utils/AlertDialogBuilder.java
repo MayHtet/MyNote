@@ -16,7 +16,7 @@ public class AlertDialogBuilder {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        appModel.deleteNote(note.getCreatedmili());
+                        appModel.deleteNote(note);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

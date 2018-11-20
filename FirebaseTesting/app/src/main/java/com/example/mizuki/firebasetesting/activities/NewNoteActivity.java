@@ -60,6 +60,7 @@ public class NewNoteActivity extends BaseActivity {
         note.setDescription(etDescription.getText().toString());
         note.setTitle(etTitle.getText().toString());
         note.setEmotion(etFeeling.getText().toString());
+        note.setDelete(Long.valueOf(0));
 
         getmAppModel().startUploadNote(note);
 

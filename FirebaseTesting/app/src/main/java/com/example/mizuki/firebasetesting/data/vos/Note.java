@@ -6,6 +6,8 @@ import java.io.Serializable;
 @SuppressWarnings("unused")
 public class Note implements Serializable{
 
+    private Long delete;
+
     private String createdmili;
 
     private String date;
@@ -54,5 +56,13 @@ public class Note implements Serializable{
 
     public void setCreatedmili(String createdmili) {
         this.createdmili = createdmili;
+    }
+
+    public Long getDelete() {
+        return delete;
+    }
+
+    public void setDelete(Long delete) {
+        this.delete = delete;
     }
 }

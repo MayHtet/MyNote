@@ -74,6 +74,7 @@ public class EditNoteActivity extends BaseActivity{
         newNote.setDescription(etDescription.getText().toString());
         newNote.setTitle(etTitle.getText().toString());
         newNote.setEmotion(etFeeling.getText().toString());
+        newNote.setDelete(mNote.getDelete());
 
         getmAppModel().editNote(newNote);
 

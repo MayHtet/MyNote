@@ -34,6 +34,7 @@ public class AppModel extends AndroidViewModel {
 
                 for(DataSnapshot noteDSS: dataSnapshot.getChildren()){
                     Note note = noteDSS.getValue(Note.class);
+                    if(note.getDelete() != 1)
                     noteList.add(note);
                 }
 
@@ -55,14 +56,21 @@ public class AppModel extends AndroidViewModel {
 
     public void editNote(Note note){
 
-
         ChildDatabaseReference.getChildDBR().child(note.getCreatedmili()).setValue(note);
 
     }
 
-    public void deleteNote(String createMili){
+    public void deleteNote(Note note){
 
-        ChildDatabaseReference.getChildDBR().child(createMili).removeValue();
+        Note newNote = new Note();
+        newNote.setCreatedmili(note.getCreatedmili());
+        newNote.setDate(note.getDate());
+        newNote.setDescription(note.getDescription());
+        newNote.setEmotion(note.getEmotion());
+        newNote.setTitle(note.getTitle());
+        newNote.setDelete(Long.valueOf(1));
+
+        ChildDatabaseReference.getChildDBR().child(newNote.getCreatedmili()).setValue(newNote);
     }
 
 

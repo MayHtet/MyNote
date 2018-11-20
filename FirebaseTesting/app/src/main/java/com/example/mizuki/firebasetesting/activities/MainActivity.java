@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.mizuki.firebasetesting.R;
@@ -26,17 +28,21 @@ public class MainActivity extends BaseActivity implements EditNoteCallback{
 
     @BindView(R.id.rv_note)
     RecyclerView rvNote;
+    @BindView(R.id.progressbar)
+    ProgressBar progressbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        progressbar.setVisibility(View.VISIBLE);
+
         getmAppModel().startLoadingNoteList(new NoteListCallback() {
             @Override
             public void loadNoteList(List<Note> noteList) {
-                Toast.makeText(MainActivity.this,noteList.size()+"",Toast.LENGTH_LONG).show();
                 
                 setUpRecyclerView(noteList);
+                progressbar.setVisibility(View.GONE);
             }
         });
     }
